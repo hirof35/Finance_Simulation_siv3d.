@@ -1,0 +1,51 @@
+<Window x:Class="InvestmentApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sp="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+        Title="投資シミュレーター Pro" Height="650" Width="1000"
+        Background="#1E1E1E" Foreground="#E0E0E0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <Border Background="#252526" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="シミュレーション設定" FontSize="18" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="毎月の積立額 (円)" Foreground="#BB86FC"/>
+                    <Slider x:Name="SldMonthly" Minimum="10000" Maximum="300000" Value="50000" TickFrequency="10000" IsSnapToTickEnabled="True" ValueChanged="UpdateTrigger"/>
+                    <TextBlock Text="{Binding ElementName=SldMonthly, Path=Value, StringFormat={}{0:N0}円}" HorizontalAlignment="Right" Foreground="#B0B0B0"/>
+
+                    <TextBlock Text="期待利回り / 年利 (%)" Margin="0,15,0,0" Foreground="#BB86FC"/>
+                    <Slider x:Name="SldRate" Minimum="0" Maximum="15" Value="5" TickFrequency="0.1" IsSnapToTickEnabled="True" ValueChanged="UpdateTrigger"/>
+                    <TextBlock Text="{Binding ElementName=SldRate, Path=Value, StringFormat={}{0:F1}%}" HorizontalAlignment="Right" Foreground="#B0B0B0"/>
+
+                    <TextBlock Text="リスク / 標準偏差 (%)" Margin="0,15,0,0" Foreground="#BB86FC"/>
+                    <Slider x:Name="SldRisk" Minimum="1" Maximum="30" Value="15" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="UpdateTrigger"/>
+                    <TextBlock Text="{Binding ElementName=SldRisk, Path=Value, StringFormat={}{0}%}" HorizontalAlignment="Right" Foreground="#B0B0B0"/>
+
+                    <TextBlock Text="投資期間 (年)" Margin="0,15,0,0" Foreground="#BB86FC"/>
+                    <Slider x:Name="SldYears" Minimum="1" Maximum="40" Value="20" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="UpdateTrigger"/>
+                    <TextBlock Text="{Binding ElementName=SldYears, Path=Value, StringFormat={}{0}年}" HorizontalAlignment="Right" Foreground="#B0B0B0"/>
+
+                    <Separator Margin="0,20" Background="#333333"/>
+
+                    <TextBlock Text="目標金額 (万円)" Foreground="#03DAC6"/>
+                    <Slider x:Name="SldTarget" Minimum="500" Maximum="10000" Value="3000" TickFrequency="500" IsSnapToTickEnabled="True" ValueChanged="UpdateTrigger"/>
+                    <TextBlock Text="{Binding ElementName=SldTarget, Path=Value, StringFormat={}{0:N0}万円}" HorizontalAlignment="Right" Foreground="#03DAC6"/>
+
+                    <Border Background="#333337" CornerRadius="5" Padding="12" Margin="0,20,0,0">
+                        <TextBlock x:Name="TxtAdvice" TextWrapping="Wrap" FontSize="12" Text="計算中..."/>
+                    </Border>
+
+                    <Button Content="画像を保存" Margin="0,20,0,5" Padding="10" Click="BtnSave_Click" Background="#3700B3" Foreground="White" BorderThickness="0"/>
+                    <Button Content="CSV出力" Padding="10" Click="BtnCsv_Click" Background="#444444" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+
+        <sp:WpfPlot x:Name="WpfPlot1" Grid.Column="1"/>
+    </Grid>
+</Window>
