@@ -91,16 +91,16 @@ namespace tousiapp
             // Scatter の戻り値を使って色を設定
             // 各ラインの描画（LegendTextを使用）
             var pBest = WpfPlot1.Plot.Add.Scatter(x, b);
-            pBest.LegendText = "最良シナリオ (上位5%)";
+            pBest.LegendText = "Best scenario (top 5%)";
             pBest.Color = Color.FromHex("#03DAC6");
 
             var pMedian = WpfPlot1.Plot.Add.Scatter(x, m);
-            pMedian.LegendText = "中央値";
+            pMedian.LegendText = "median";
             pMedian.Color = Color.FromHex("#BB86FC");
             pMedian.LineWidth = 3;
 
             var pWorst = WpfPlot1.Plot.Add.Scatter(x, w);
-            pWorst.LegendText = "最悪シナリオ (下位5%)";
+            pWorst.LegendText = "Worst-case scenario (bottom 5%)";
             pWorst.Color = Color.FromHex("#CF6679");
             var hLine = WpfPlot1.Plot.Add.HorizontalLine(target);
             hLine.Color = ScottPlot.Color.FromHex("#03DAC6");
