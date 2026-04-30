@@ -11,4 +11,5 @@ Visual Studio でソリューションを開きます。NuGet パッケージマ
 $$YearlyRate = AverageRate + (StandardDeviation \times RandomNormal)$$AverageRate: 設定した期待利回りStandardDeviation: 設定したリスク（標準偏差）RandomNormal: 平均0、分散1の正規分布乱数📂 ファイル構成MainWindow.xaml: スライダーやボタン、グラフ領域を定義するUIレイアウト。MainWindow.xaml.cs: シミュレーションアルゴリズムとグラフ描画ロジック。
 📝 免責事項本アプリケーションは投資結果を保証するものではありません。
 金融市場の過去のデータに基づいた統計的モデルによる推測であり、実際の運用には慎重な判断が必要です。
-<img width="1919" height="1029" alt="スクリーンショット 2026-04-30 182814" src="https://github.com/user-attachments/assets/76034e7b-f8f2-4784-9900-e9f3eed81c57" />
+<img width="1226" height="796" alt="スクリーンショット 2026-04-30 183019" src="https://github.com/user-attachments/assets/842b3ccd-5a77-45ed-85f1-39d935f561ae" />
+
